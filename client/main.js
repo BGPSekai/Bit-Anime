@@ -1,5 +1,9 @@
+import { Meteor } from 'meteor/meteor'
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import React from 'react'
+import { render } from 'react-dom'
+import Index from '../view/index'
 
 import './main.html';
 
@@ -20,3 +24,8 @@ Template.hello.events({
     instance.counter.set(instance.counter.get() + 1);
   },
 });
+
+Meteor.startup(() => {
+  // code to run on server at startup
+  render(<Index />, document.getElementById('main'))
+})
